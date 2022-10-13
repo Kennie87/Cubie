@@ -6,7 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,6 +24,22 @@ public class Events extends AppCompatActivity {
         setContentView(R.layout.activity_events);
         bottomNavigationView=findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
+
+
+        TextView textView = findViewById(R.id.wit);
+        String text = "Women In Tech";
+        SpannableString ss = new SpannableString(text);
+        ClickableSpan clickableSpan1 = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View view) {
+                startActivity(new Intent(getApplicationContext(),WomenInTechPage.class));
+            }
+        };
+
+        ss.setSpan(clickableSpan1,0,13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textView.setText(ss);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
 
         TextView tv = (TextView) findViewById(R.id.hack);
         tv.setText("Hack-a-Thon");

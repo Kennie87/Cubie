@@ -28,6 +28,7 @@
                     android:layout_margin="20dp">
 
                     <TextView
+                        android:id="@+id/wit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Women In Tech\n Upcoming"
